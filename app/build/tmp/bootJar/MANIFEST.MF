@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Start-Class: com.webbfontaine.repoactivitiesanalyzer.app.RepoActivitie
+ sAnalyzerApp
+Main-Class: org.springframework.boot.loader.JarLauncher
+

@@ -1,0 +1,51 @@
+buildscript {
+	ext {
+		easymockVersion = '3.5.1'
+		springBootVersion = '2.1.3.RELEASE'
+	}
+
+	repositories {
+		jcenter()
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+		maven { url "https://repo.spring.io/libs-snapshot" }
+
+	}
+
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+	}
+}
+
+subprojects {
+
+	apply plugin: 'java'
+	apply plugin: 'idea'
+
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+
+	repositories {
+		jcenter()
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+
+	
+	dependencies {
+		/** Jackson **/
+		compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+		
+		compileOnly "org.mapstruct:mapstruct:1.2.0.Final"
+		compileOnly "org.mapstruct:mapstruct-processor:1.2.0.Final"
+		
+		/**Test **/
+		testImplementation('org.springframework.boot:spring-boot-starter-test')
+		compile "org.easymock:easymock:${easymockVersion}"
+	}
+}

@@ -1,0 +1,11 @@
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.webbfontaine.repoactivitiesanalyzer.app.RepoActivitiesAnalyzerApp'
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    compile project(":core")
+}
