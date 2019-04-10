@@ -1,0 +1,23 @@
+<div class="container">
+  <h3 align="center" class="pt-3">Search public project</h3>
+
+  <div class="row">
+    <input type="text" class="col-10" name="searchInput" [(ngModel)]="projectName"
+           #searchInput="ngModel"/>
+    <button class="btn btn-primary col-2 cursor-pointer" (click)="searchRepositories()">Search</button>
+  </div>
+
+  <div *ngIf="repositories && repositories.length > 0" class="row">
+    <p class="text-justify font-weight-bold">{{totalCount}} repository results</p>
+  </div>
+
+  <div class="row pt-3" *ngFor="let repository of repositories;">
+    <div class="col-12">
+      <label class="btn-link cursor-pointer" (click)="openRepositiryDetail(repository.owner.login + '/' + repository.name)">
+        {{repository.owner.login + "/" + repository.name}}</label>
+      <p class="text-justify">
+        {{repository.description}}
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="app flex-row align-items-center pr-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card-group mb-0">
+          <div class="card p-4">
+            <div class="card-block">
+              <h1 class="text-nowrap pb-3">Sign up</h1>
+              <form name="form"
+                    (ngSubmit)="f.form.valid && (password.value == confirmPassword.value) && createAccount()"
+                    #f="ngForm" novalidate>
+                <div class="form-group row">
+                  <label class="col-form-label col-form-label-sm col-3">First name</label>
+                  <div class="col-9">
+                    <input type="text" class="form-control form-control-sm bg-white col-12" name="firstName"
+                           [(ngModel)]="mv.firstName" #firstName="ngModel" required [pattern]="namePattern">
+                    <label *ngIf="f.submitted && firstName.invalid" class="help-block text-danger">
+                      first name is not valid</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-form-label col-form-label-sm col-3">Last name</label>
+                  <div class="col-9">
+                    <input type="text" class="form-control form-control-sm bg-white col-12" name="lastName"
+                           [(ngModel)]="mv.lastName" #lastName="ngModel" required [pattern]="namePattern">
+                    <label *ngIf="f.submitted && lastName.invalid" class="help-block text-danger">
+                      last name is not valid</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-form-label col-form-label-sm col-3">Email</label>
+                  <div class="col-9">
+                    <input type="text" class="form-control form-control-sm bg-white col-12" name="email"
+                           [(ngModel)]="mv.email" #email="ngModel" required [pattern]="emailPattern">
+                    <label *ngIf="f.submitted && email.invalid" class="help-block text-danger">
+                      email is not valid</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-form-label col-form-label-sm col-3">Username</label>
+                  <div class="col-9">
+                    <input type="text" class="form-control form-control-sm bg-white col-12" name="username"
+                           [(ngModel)]="mv.username" #username="ngModel" required [pattern]="usernamePattern">
+                    <label *ngIf="f.submitted && username.invalid" class="help-block text-danger">
+                      username must be minimum 3 characters long and valid characters are: a-z, A-Z, 0-9</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-form-label col-form-label-sm col-3">Password</label>
+                  <div class="col-9">
+                    <input type="password" class="form-control form-control-sm bg-white col-12" name="password"
+                           [(ngModel)]="mv.password" #password="ngModel" required [pattern]="passwordPattern">
+                    <label *ngIf="f.submitted && password.invalid" class="help-block text-danger">
+                      passwords must be minimum 8 characters long including at least one uppercase letter, one lowercase
+                      letter and one number</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-form-label col-form-label-sm col-3">Confirm password</label>
+                  <div class="col-9">
+                    <input type="password" class="form-control form-control-sm bg-white col-12" name="confirmPassword"
+                           [(ngModel)]="mv.confirmPassword" #confirmPassword="ngModel" required
+                           [pattern]="passwordPattern">
+                    <label *ngIf="f.submitted && confirmPassword.invalid" class="help-block text-danger">
+                      passwords must be minimum 8 characters long including at least one uppercase letter, one lowercase
+                      letter and one number</label>
+                    <label
+                      *ngIf="f.submitted && !password.invalid && !confirmPassword.invalid && (password.value != confirmPassword.value)"
+                      class="help-block text-danger">passwords do not match</label>
+                  </div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-6">
+                    <button class="btn btn-success px-4">Create account</button>
+                  </div>
+                </div>
+              </form>
+
+              <div class="row">
+                <div class="col-md-auto">
+                  <span>Already have an account?<button type="button" class="btn btn-link pl-2 pt-1"
+                                                        (click)="onSignInClick();">Sign in</button></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
